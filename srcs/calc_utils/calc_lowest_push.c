@@ -6,22 +6,22 @@
 /*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 15:29:37 by myeow             #+#    #+#             */
-/*   Updated: 2024/04/04 02:21:10 by myeow            ###   ########.fr       */
+/*   Updated: 2024/04/04 22:22:07 by myeow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static int	calc_rotate(t_list *lst1, t_list *lst2, int f, int *n)
+static int	calc_rotate(t_list *lst1, t_list *lst2, int f, t_data lc)
 {
-	static int	(*calc_rotate_f[])(t_list *, t_list *, int) = {
+	static int	(*calc_rotate_f[])(t_list *, t_list *, int, char) = {
 		calc_rotate_r1r2,
 		calc_rotate_rr1rr2,
 		calc_rotate_r1rr2,
 		calc_rotate_rr1r2
 	};
 
-	return (calc_rotate_f[f](lst1, lst2, *n));
+	return (calc_rotate_f[f](lst1, lst2, lc.n, lc.ab[0]));
 }
 
 static void	update_lowest_cost(t_data *lc, int i, int f)
@@ -51,7 +51,8 @@ void	calc_lowest_push(t_list *lst1, t_list *lst2, t_data *lc)
 	int		f;
 
 	curr = lst1;
-	cost = calc_rotate(lst1, lst2, 0, (int *) lst1->content);
+	lc->n = *((int *) curr->content);
+	cost = calc_rotate(lst1, lst2, 0, *lc);
 	update_lowest_cost(lc, 0, 0);
 	i = 0;
 	while (curr)
@@ -59,9 +60,10 @@ void	calc_lowest_push(t_list *lst1, t_list *lst2, t_data *lc)
 		f = -1;
 		while (++f < 4)
 		{
-			if (cost > calc_rotate(lst1, lst2, f, (int *) curr->content))
+			lc->n = *((int *) curr->content);
+			if (cost > calc_rotate(lst1, lst2, f, *lc))
 			{
-				cost = calc_rotate(lst1, lst2, f, (int *) curr->content);
+				cost = calc_rotate(lst1, lst2, f, *lc);
 				update_lowest_cost(lc, i, f);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:52:21 by myeow             #+#    #+#             */
-/*   Updated: 2024/04/04 02:31:09 by myeow            ###   ########.fr       */
+/*   Updated: 2024/04/04 22:48:44 by myeow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ int	main(int argc, char **argv)
 		ft_error(PARSE_ERROR);
 		exit(1);
 	}
-	ft_lstprint(a, '\n');
 	b = 0;
 	if (!ft_lstissorted(a))
 		ps_sort(&a, &b);
-	ft_lstprint(a, '\n');
+	ft_lstprint(a, ' ');
 	ft_lstclear(&a, ft_clear);
 	return (0);
 }

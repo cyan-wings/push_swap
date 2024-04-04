@@ -6,7 +6,7 @@
 /*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:36:41 by myeow             #+#    #+#             */
-/*   Updated: 2024/04/04 02:27:37 by myeow            ###   ########.fr       */
+/*   Updated: 2024/04/04 22:51:24 by myeow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@
  */
 void	ps_perform_rotation(t_list **lst1, t_list **lst2, t_data lc)
 {
-	int	n;
-
-	n = lc.n;
-	while (*((int *) (*lst1)->content) != n && calc_push_index(*lst2, n) > 0)
-		ps_lstperform_operation(ROTT, 'r', lst1, lst2);
-	while (*((int *) (*lst1)->content) != n)
+	if (lc.f1 == lc.f2)
+	{
+		while (*((int *)(*lst1)->content) != lc.n && \
+				calc_push_index(*lst2, lc.n, lc.ab[0]) > 0)
+			ps_lstperform_operation(lc.f1, 'r', lst1, lst2);
+	}
+	while (*((int *)(*lst1)->content) != lc.n)
 		ps_lstperform_operation(lc.f1, lc.ab[0], lst1, 0);
-	while (calc_push_index(*lst2, n) > 0)
+	while (calc_push_index(*lst2, lc.n, lc.ab[0]) > 0)
 		ps_lstperform_operation(lc.f2, lc.ab[1], lst2, 0);
 }

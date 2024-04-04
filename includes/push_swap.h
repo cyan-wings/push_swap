@@ -6,7 +6,7 @@
 /*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 14:44:46 by myeow             #+#    #+#             */
-/*   Updated: 2024/04/04 02:24:37 by myeow            ###   ########.fr       */
+/*   Updated: 2024/04/04 21:59:43 by myeow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/includes/libft.h"
 # include "ft_lstpush_swap.h"
+# include <stdio.h>
 
 typedef enum s_operation
 {
@@ -38,11 +39,11 @@ typedef struct s_data
 	char	*ab;
 }	t_data;
 
-int		calc_push_index(t_list *lst, int n);
-int		calc_rotate_r1r2(t_list *lst1, t_list *lst2, int n);
-int		calc_rotate_rr1rr2(t_list *lst1, t_list *lst2, int n);
-int		calc_rotate_r1rr2(t_list *lst1, t_list *lst2, int n);
-int		calc_rotate_rr1r2(t_list *lst1, t_list *lst2, int n);
+int		calc_push_index(t_list *lst, int n, char fromlst);
+int		calc_rotate_r1r2(t_list *lst1, t_list *lst2, int n, char fromlst);
+int		calc_rotate_rr1rr2(t_list *lst1, t_list *lst2, int n, char fromlst);
+int		calc_rotate_r1rr2(t_list *lst1, t_list *lst2, int n, char fromlst);
+int		calc_rotate_rr1r2(t_list *lst1, t_list *lst2, int n, char fromlst);
 void	calc_lowest_push(t_list *lst1, t_list *lst2, t_data *lc);
 void	ps_perform_rotation(t_list **lst1, t_list **lst2, t_data lc);
 void	ps_lstperform_operation(t_operation o, char l, t_list **a, t_list **b);

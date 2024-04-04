@@ -6,7 +6,7 @@
 /*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 15:18:59 by myeow             #+#    #+#             */
-/*   Updated: 2024/04/03 23:15:49 by myeow            ###   ########.fr       */
+/*   Updated: 2024/04/04 22:53:35 by myeow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	ps_sort_three_case_d_f(t_list **lst)
  */
 void	ps_sort_three(t_list **lst)
 {
-	if (ft_lstmin(*lst) == *((int *) (*lst)->content))
+	if (ft_lstmin(*lst) == *((int *)(*lst)->content))
 		ps_lstperform_operation(SWAP, 'a', lst, 0);
-	if (ft_lstmax(*lst) == *((int *) (*lst)->content))
+	if (ft_lstmax(*lst) == *((int *)(*lst)->content))
 		ps_lstperform_operation(ROTT, 'a', lst, 0);
 	if (!ft_lstissorted(*lst))
 		ps_sort_three_case_d_f(lst);
