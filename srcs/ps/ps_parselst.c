@@ -6,7 +6,7 @@
 /*   By: myeow <myeow@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:36:16 by myeow             #+#    #+#             */
-/*   Updated: 2024/04/06 18:52:28 by myeow            ###   ########.fr       */
+/*   Updated: 2024/04/07 02:28:23 by myeow            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ static int	check_valid(char **argv)
 	while (argv[++i])
 	{
 		j = 0;
-		if (argv[i][j] != '+' && argv[i][j] != '-' && !ft_isdigit(argv[i][j]))
-			return (1);
-		while (argv[i][++j])
+		if (argv[i][j] == '+' || argv[i][j] == '-')
 		{
-			if (!ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(argv[i][++j]))
+				return (1);
+		}
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j++]))
 				return (1);
 		}
 		if (ps_ft_atol(argv[i]) > INT_MAX || ps_ft_atol(argv[i]) < INT_MIN)
