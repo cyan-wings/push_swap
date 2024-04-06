@@ -61,12 +61,14 @@ UP				=	\033[1A
 FLUSH			=	\033[2K
 SANIT			=	-fsanitize=address
 
+CHECKER			=	./checker_Mac
+
 all: $(NAME)
 
 bonus: all
 
 $(NAME): $(LIBFT) $(OBJDIRS) $(OBJS)
-	$(CC) $(WFLAGS) -o $(NAME) $(OBJS) $(LIBFTINC) $(SANIT)
+	$(CC) $(WFLAGS) -o $(NAME) $(OBJS) $(LIBFTINC)
 
 $(LIBFT):
 	$(MAKE) $(LIBFTDIR)
